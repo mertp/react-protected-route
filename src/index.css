@@ -7,6 +7,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.form-group{
+  margin-left: auto;
+  margin-right: auto;
+  width: 20em;
+}
+.form-inner{
+  margin-left: auto;
+  margin-right: auto;
+  width: 20em;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
