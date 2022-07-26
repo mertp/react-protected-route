@@ -1,39 +1,31 @@
-import  React,{useState} from'react';
-import LoginForm  from './Login';
+import "./App.css";
+import "./components/Login"
+import LoginForm from "./components/Login";
+import { BrowserRouter, Route, Routes, } from 'react-router-dom';
+import Welcome from "./components/Welcome";
+import PrivateRoutes from "./components/PrivateRoute"
+import LoginForm from "./components/Login";
 
 function App() {
-  const adminUser ={
-    email:"admin@trabilisim.com",
-    password:"tra"
-  }
-  const [user,setUser]=useState({name:"",email:""});
-  const [error,setError]=useState("");
 
-  const Login = details => {
-    console.log(details);
-    setUser({
-      name:details.name,
-      email:details.email
-    });
-
-  } 
-
-  
-  const Logout= ()=> {
-    console.log("Logout");
-
-  }
-
- return (
-  <div className='App'> 
-  {(user.email !="" ) ? (
-    <div className="welcome">
-      <h2>Welcome <span>{user.name}</span></h2>
-     
-  </div>
- ) : (
-  <LoginForm Login={Login} error={error}/>
- )}
- </div> 
- );}
+  return (
+    
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={App}></Route>
+          <Route  path="/login" element={LoginForm}></Route>
+          <Route exact path='/welcome' 
+            element={
+              <Protected isLoggedIn={isloggedIn} >
+                <Welcome />
+              </Protected>
+            }
+          />
+        </Routes>
+        </BrowserRouter>
+    </div>
+    
+  );
+}
 export default App;
